@@ -1,0 +1,26 @@
+[
+  {
+    "name": "A",
+    "price": 50,
+    "deal": true,
+    "NoOfItems": 3,
+    "dealPrice": 130
+  },
+  {
+    "name": "B",
+    "price": 30,
+    "deal": true,
+    "NoOfItems": 2,
+    "dealPrice": 45
+  },
+  {
+    "name": "C",
+    "price": 20,
+    "deal": false
+  },
+  {
+    "name": "D",
+    "price": 15,
+    "deal": false
+  }
+]
