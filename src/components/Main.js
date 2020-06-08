@@ -25,8 +25,10 @@ class Main extends React.Component {
   render() {
     const { noOfA, noOfB, noOfC, noOfD } = this.state;
     return (
-      <Products productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
-      <Cart />
+      <>
+        <Products productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
+        <Cart productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
+      </>
     )
   }
 
