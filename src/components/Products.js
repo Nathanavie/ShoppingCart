@@ -1,12 +1,8 @@
 import React from 'react';
+import { moneyFormat } from '../Utils/utils'
 
 const Products = props => {
   let productList = props.productsList;
-
-  const moneyFormat = new Intl.NumberFormat('en-GB', {
-    style: 'currency',
-    currency: 'GBP'
-  })
 
   const products = productList.map((product, i) => {
     let dealPrice = product.dealPrice;

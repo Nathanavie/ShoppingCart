@@ -53,6 +53,7 @@ class Main extends React.Component {
   }
 
   updateTotalPrice = () => {
+    console.log('updating');
     let a = this.state.noOfA,
         b = this.state.noOfB,
         c = this.state.noOfC,
@@ -84,7 +85,8 @@ class Main extends React.Component {
       finalAPrice: finalAPrice,
       finalBPrice: finalBPrice,
       finalCPrice: finalCPrice,
-      finalDPrice: finalDPrice
+      finalDPrice: finalDPrice,
+      totalPrice: finalAPrice + finalBPrice + finalCPrice + finalDPrice
     })
   }
 
@@ -93,8 +95,12 @@ class Main extends React.Component {
 
     this.setState({
       [name]: value,
-    })
-    this.updateTotalPrice()
+    },
+    function() {
+      this.updateTotalPrice();
+    }
+
+    )
   }
 
   componentDidMount() {
@@ -103,11 +109,11 @@ class Main extends React.Component {
 
   render() {
     const { noOfA, noOfB, noOfC, noOfD,
-            finalAPrice, finalBPrice, finalCPrice, finalDPrice } = this.state;
+            finalAPrice, finalBPrice, finalCPrice, finalDPrice, totalPrice } = this.state;
     return (
       <>
         <Products productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
-        <Cart noA={noOfA} noB={noOfB} noC={noOfC} noD={noOfD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice}/>
+        <Cart noA={noOfA} noB={noOfB} noC={noOfC} noD={noOfD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
       </>
     )
   }
