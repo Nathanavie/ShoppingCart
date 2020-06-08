@@ -17,23 +17,17 @@ const Products = props => {
       dealPrice = `${dealPrice}p`;
     }
 
-
-    if (product.deal) {
-        return (
-          <div key={i}>
-            <p>Product Name: {product.name}</p>
-            <p>Price: {product.price}p</p>
-            <p>Buy {product.NoOfItems} for {dealPrice}</p>
-          </div>
-        )
-    } else {
       return (
         <div key={i}>
           <p>Product Name: {product.name}</p>
           <p>Price: {product.price}p</p>
+          {product.deal ? <p>Buy {product.NoOfItems} for {dealPrice}</p> : ''}
+          {product.name === 'A' ? <input type="number" name="noOfA" value={props.A} onChange={props.handleChange} /> :
+           product.name === 'B' ? <input type="number" name="noOfB" value={props.B} onChange={props.handleChange} /> :
+           product.name === 'C' ? <input type="number" name="noOfC" value={props.C} onChange={props.handleChange} /> :
+           product.name === 'D' ? <input type="number" name="noOfD" value={props.D} onChange={props.handleChange} /> : ''}
         </div>
       )
-    }
   })
 
   return (
