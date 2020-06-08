@@ -13,17 +13,17 @@ const Products = props => {
 
     if (dealPrice > 99) {
       dealPrice = moneyFormat.format(product.dealPrice / 100);
-      console.log(dealPrice);
+    } else {
+      dealPrice = `${dealPrice}p`;
     }
 
-    console.log('price: ', dealPrice);
 
     if (product.deal) {
         return (
           <div key={i}>
             <p>Product Name: {product.name}</p>
             <p>Price: {product.price}p</p>
-            <p>Buy {product.NoOfItems} for {product.dealPrice}</p>
+            <p>Buy {product.NoOfItems} for {dealPrice}</p>
           </div>
         )
     } else {
