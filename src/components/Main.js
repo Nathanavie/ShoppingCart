@@ -1,5 +1,6 @@
 import React from 'react';
 import Products from './Products';
+import Cart from './Cart';
 import products from '../assets/products.json';
 
 class Main extends React.Component {
@@ -25,6 +26,7 @@ class Main extends React.Component {
     const { noOfA, noOfB, noOfC, noOfD } = this.state;
     return (
       <Products productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
+      <Cart />
     )
   }
 
