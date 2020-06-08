@@ -7,11 +7,8 @@ const Products = props => {
   const products = productList.map((product, i) => {
     let dealPrice = product.dealPrice;
 
-    if (dealPrice > 99) {
-      dealPrice = moneyFormat.format(product.dealPrice / 100);
-    } else {
-      dealPrice = `${dealPrice}p`;
-    }
+    {dealPrice > 99 ? dealPrice = moneyFormat.format(product.dealPrice / 100) : dealPrice = `${dealPrice}p`};
+
 
       return (
         <div key={i}>
