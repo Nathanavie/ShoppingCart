@@ -1,5 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This was a tech test for CDL. A demo of this code can be found [here](https://cdlkata.netlify.app)
 ## Available Scripts
 
 In the project directory, you can run:
