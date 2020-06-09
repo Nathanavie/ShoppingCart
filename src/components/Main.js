@@ -7,10 +7,10 @@ class Main extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      noOfA: 0,
-      noOfB: 0,
-      noOfC: 0,
-      noOfD: 0,
+      noOfA: localStorage.getItem('noOfA') || 0,
+      noOfB: localStorage.getItem('noOfB') || 0,
+      noOfC: localStorage.getItem('noOfC') || 0,
+      noOfD: localStorage.getItem('noOfD') || 0,
       totalPrice: 0,
       aPrice: 0,
       bPrice: 0,
@@ -100,13 +100,11 @@ class Main extends React.Component {
     this.setState({
       [name]: value,
     })
+    localStorage.setItem([name], value);
   }
 
-  componentDidMount() {
-    this.setProductPrices();
-  }
 
-  updateCart = e => {
+  updateCart = () => {
     this.setState({
       cartA: this.state.noOfA,
       cartB: this.state.noOfB,
@@ -117,6 +115,23 @@ class Main extends React.Component {
     })
   }
 
+  clearCart = () => {
+    localStorage.clear();
+    this.setState({
+      noOfA: 0,
+      noOfB: 0,
+      noOfC: 0,
+      noOfD: 0
+    },function(){
+      this.updateCart();
+    })
+  }
+
+  componentDidMount() {
+    this.setProductPrices();
+    this.updateCart();
+  }
+
   render() {
     const { noOfA, noOfB, noOfC, noOfD,
             finalAPrice, finalBPrice, finalCPrice, finalDPrice, totalPrice,
@@ -124,7 +139,7 @@ class Main extends React.Component {
     return (
       <>
         <Products updateCart={this.updateCart} productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
-        <Cart noA={cartA} noB={cartB} noC={cartC} noD={cartD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
+        <Cart clearCart={this.clearCart} noA={cartA} noB={cartB} noC={cartC} noD={cartD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
       </>
     )
   }
