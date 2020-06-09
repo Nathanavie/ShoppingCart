@@ -1,4 +1,6 @@
-
+html {
+  overflow: hidden;
+}
 
 .product, .cart {
   border-radius: 20px;
@@ -24,7 +26,7 @@
 
 .productDetails {
   display: grid;
-  grid-template-rows: repeat(3, 3em);
+  grid-template-rows: repeat(4, 3em);
   grid-template-columns: repeat(2, auto);
   padding: 1em;
 }
@@ -42,14 +44,19 @@
 
 .productPrice, .productDeal {
   grid-column: 1 / -1;
+  text-align: center;
+}
+
+.productDeal {
+  margin: auto 0;
 }
 
 .productPrice {
   grid-row: 1;
 }
 
+
 .productInput {
-  grid-row: 3;
   grid-column: 1;
   border: .1rem solid #83b9e8;
   font-size: 1rem;
@@ -61,25 +68,35 @@ input[type=number]::-webkit-outer-spin-button {
   transform: scale(1.3)
 }
 
-.updateCart {
-  grid-row: 3;
-  grid-column: 2;
+.clearCart,.updateCart {
   border: .1rem solid #83b9e8;
+  background: #fff;
+}
+
+.clearCart {
+  padding: 1em;
+}
+
+.updateCart {
+  grid-column: 2;
   border-left: none;
   transition: all .1s ease;
 }
-.updateCart:hover {
+
+.updateCart:hover, .clearCart:hover {
   cursor: pointer;
   background: #83b9e8
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus, button:focus {
   outline: none;
 }
 
 .cart {
   height: 57%;
-  min-width: 30em;
+  min-width: 31%;
+  margin-left: 1em;
+  text-align: center;
 }
 
 .cartItems h4 {
@@ -89,9 +106,26 @@ input[type="number"]:focus {
 .cartItems {
   padding: 1em;
 }
+
+header {
+  width: 100%;
+  text-align: center;
+  background: black;
+  color: #fff;
+  padding: 1em 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
 @media (max-width: 768px) {
+  html {
+    overflow: scroll;
+  }
   .container {
     justify-content: unset;
+    margin-top: 1em;
   }
   .productContainer {
     width: 100%;
@@ -99,6 +133,7 @@ input[type="number"]:focus {
   .cart {
     min-width: 90%;
     margin: 1em auto 0;
+    height: fit-content;
   }
   .product {
     width: 90%;

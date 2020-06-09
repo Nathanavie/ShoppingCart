@@ -23,7 +23,7 @@ const Cart = props => {
         {product.noB > 0 ? <div><p><strong>B</strong> Quantity: {product.noB} Price: {priceB}</p></div> : ''}
         {product.noC > 0 ? <div><p><strong>C</strong> Quantity: {product.noC} Price: {priceC}</p></div> : ''}
         {product.noD > 0 ? <div><p><strong>D</strong> Quantity: {product.noD} Price: {priceD}</p></div> : ''}
-        {totalPrice != '0p' ? <><p>Total: {totalPrice}</p> <button className="clearCart" onClick={props.clearCart}>Clear Cart</button></>: ''}
+        {totalPrice != '0p' ? <><p><strong>Total:</strong> {totalPrice}</p> <button className="clearCart" onClick={props.clearCart}>Clear Cart</button></>: ''}
       </div>
     </div>
   )

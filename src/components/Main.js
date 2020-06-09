@@ -1,6 +1,7 @@
 import React from 'react';
 import Products from './Products';
 import Cart from './Cart';
+import Header from './Header';
 import products from '../assets/products.json';
 
 class Main extends React.Component {
@@ -137,10 +138,13 @@ class Main extends React.Component {
             finalAPrice, finalBPrice, finalCPrice, finalDPrice, totalPrice,
             cartA, cartB, cartC, cartD } = this.state;
     return (
-      <div className="container">
-        <Products updateCart={this.updateCart} productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
-        <Cart clearCart={this.clearCart} noA={cartA} noB={cartB} noC={cartC} noD={cartD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
-      </div>
+      <>
+        <Header />
+        <div className="container">
+          <Products updateCart={this.updateCart} productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
+          <Cart clearCart={this.clearCart} noA={cartA} noB={cartB} noC={cartC} noD={cartD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
+        </div>
+      </>
     )
   }
 
