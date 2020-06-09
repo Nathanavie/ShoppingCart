@@ -14,13 +14,17 @@ const Cart = props => {
 
   return (
     <div className="cart">
-    <h2>Your Cart</h2>
-    <p>Your items</p>
-    {product.noA > 0 ? <div><p>Product A: {product.noA} cost: {priceA}</p></div> : ''}
-    {product.noB > 0 ? <div><p>Product B: {product.noB} cost: {priceB}</p></div> : ''}
-    {product.noC > 0 ? <div><p>Product C: {product.noC} cost: {priceC}</p></div> : ''}
-    {product.noD > 0 ? <div><p>Product D: {product.noD} cost: {priceD}</p></div> : ''}
-    {totalPrice != '0p' ? <><p>Total: {totalPrice}</p> <button onClick={props.clearCart}>Clear Cart</button></>: ''}
+      <div className="productTitle">
+        <h2>Your Cart</h2>
+      </div>
+      <div className="cartItems">
+        {totalPrice != '0p' ? <h4>Your items</h4> : <h4>Your Cart is empty</h4>}
+        {product.noA > 0 ? <div><p><strong>A</strong> Quantity: {product.noA} Price: {priceA}</p></div> : ''}
+        {product.noB > 0 ? <div><p><strong>B</strong> Quantity: {product.noB} Price: {priceB}</p></div> : ''}
+        {product.noC > 0 ? <div><p><strong>C</strong> Quantity: {product.noC} Price: {priceC}</p></div> : ''}
+        {product.noD > 0 ? <div><p><strong>D</strong> Quantity: {product.noD} Price: {priceD}</p></div> : ''}
+        {totalPrice != '0p' ? <><p>Total: {totalPrice}</p> <button className="clearCart" onClick={props.clearCart}>Clear Cart</button></>: ''}
+      </div>
     </div>
   )
 }
