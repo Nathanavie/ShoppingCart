@@ -13,14 +13,14 @@ const Cart = props => {
   {product.totalPrice > 99 ? totalPrice = moneyFormat.format(product.totalPrice / 100) : totalPrice = `${product.totalPrice}p`}
 
   return (
-    <div>
+    <div className="cart">
     <h2>Your Cart</h2>
     <p>Your items</p>
     {product.noA > 0 ? <div><p>Product A: {product.noA} cost: {priceA}</p></div> : ''}
     {product.noB > 0 ? <div><p>Product B: {product.noB} cost: {priceB}</p></div> : ''}
     {product.noC > 0 ? <div><p>Product C: {product.noC} cost: {priceC}</p></div> : ''}
     {product.noD > 0 ? <div><p>Product D: {product.noD} cost: {priceD}</p></div> : ''}
-    {totalPrice != '0p' ? <p>Total: {totalPrice}</p> : ''}
+    {totalPrice != '0p' ? <><p>Total: {totalPrice}</p> <button onClick={props.clearCart}>Clear Cart</button></>: ''}
     </div>
   )
 }

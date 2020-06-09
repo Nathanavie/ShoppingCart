@@ -11,7 +11,7 @@ const Products = props => {
 
 
       return (
-        <div key={i}>
+        <div className="product" key={i}>
           <p>Product Name: {product.name}</p>
           <p>Price: {product.price}p</p>
           {product.deal ? <p>Buy {product.NoOfItems} for {dealPrice}</p> : ''}
@@ -25,9 +25,9 @@ const Products = props => {
   })
 
   return (
-    <>
+    <div className="productContainer">
       {products}
-    </>
+    </div>
   )
 }
 export default Products;
