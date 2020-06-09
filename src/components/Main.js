@@ -22,6 +22,10 @@ class Main extends React.Component {
       finalBPrice: 0,
       finalCPrice: 0,
       finalDPrice: 0,
+      cartA: 0,
+      cartB: 0,
+      cartC: 0,
+      cartD: 0,
     }
   }
   setProductPrices = () => {
@@ -53,7 +57,6 @@ class Main extends React.Component {
   }
 
   updateTotalPrice = () => {
-    console.log('updating');
     let a = this.state.noOfA,
         b = this.state.noOfB,
         c = this.state.noOfC,
@@ -88,6 +91,7 @@ class Main extends React.Component {
       finalDPrice: finalDPrice,
       totalPrice: finalAPrice + finalBPrice + finalCPrice + finalDPrice
     })
+    console.log(this.state.totalPrice);
   }
 
   handleChange = event => {
@@ -95,25 +99,32 @@ class Main extends React.Component {
 
     this.setState({
       [name]: value,
-    },
-    function() {
-      this.updateTotalPrice();
-    }
-
-    )
+    })
   }
 
   componentDidMount() {
     this.setProductPrices();
   }
 
+  updateCart = e => {
+    this.setState({
+      cartA: this.state.noOfA,
+      cartB: this.state.noOfB,
+      cartC: this.state.noOfC,
+      cartD: this.state.noOfD,
+    }, function() {
+      this.updateTotalPrice();
+    })
+  }
+
   render() {
     const { noOfA, noOfB, noOfC, noOfD,
-            finalAPrice, finalBPrice, finalCPrice, finalDPrice, totalPrice } = this.state;
+            finalAPrice, finalBPrice, finalCPrice, finalDPrice, totalPrice,
+            cartA, cartB, cartC, cartD } = this.state;
     return (
       <>
-        <Products productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
-        <Cart noA={noOfA} noB={noOfB} noC={noOfC} noD={noOfD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
+        <Products updateCart={this.updateCart} productsList={products} A={noOfA} B={noOfB} C={noOfC} D={noOfD} handleChange={this.handleChange}/>
+        <Cart noA={cartA} noB={cartB} noC={cartC} noD={cartD} A={finalAPrice} B={finalBPrice} C={finalCPrice} D={finalDPrice} totalPrice={totalPrice}/>
       </>
     )
   }

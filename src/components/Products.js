@@ -19,6 +19,7 @@ const Products = props => {
            product.name === 'B' ? <input type="number" name="noOfB" value={props.B} onChange={props.handleChange} /> :
            product.name === 'C' ? <input type="number" name="noOfC" value={props.C} onChange={props.handleChange} /> :
            product.name === 'D' ? <input type="number" name="noOfD" value={props.D} onChange={props.handleChange} /> : ''}
+           <button onClick={props.updateCart}>Add To Cart</button>
         </div>
       )
   })

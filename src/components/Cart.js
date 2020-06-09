@@ -3,7 +3,8 @@ import { moneyFormat } from '../Utils/utils'
 
 const Cart = props => {
   let product = props;
-  let priceA, priceB, priceC, priceD, totalPrice = '';
+  let priceA, priceB, priceC, priceD, totalPrice = '0';
+
 
   {product.A > 99 ? priceA = moneyFormat.format(product.A / 100) : priceA = `${product.A}p`}
   {product.B > 99 ? priceB = moneyFormat.format(product.B / 100) : priceB = `${product.B}p`}
@@ -19,7 +20,7 @@ const Cart = props => {
     {product.noB > 0 ? <div><p>Product B: {product.noB} cost: {priceB}</p></div> : ''}
     {product.noC > 0 ? <div><p>Product C: {product.noC} cost: {priceC}</p></div> : ''}
     {product.noD > 0 ? <div><p>Product D: {product.noD} cost: {priceD}</p></div> : ''}
-    {totalPrice > 0 ? <p>Total: {totalPrice}</p> : ''}
+    {totalPrice != '0p' ? <p>Total: {totalPrice}</p> : ''}
     </div>
   )
 }
